@@ -12,5 +12,23 @@ require_relative 'graph'
 
 
 def install_order(arr)
+  max = arr.flatten.max
+  ids = (1..max).to_a
 
+  vertices = {}
+
+  arr.each do |tuple|
+
+    vertices[tuple[0]] = Vertex.new(tuple[0]) unless vertices[tuple[0]]
+    vertices[tuple[1]] = Vertex.new(tuple[1]) unless vertices[tuple[1]]
+    Edge.new(vertices[tuple[1]], vertices[tuple[0]])
+  end
+
+
+  ids_without_dependency = []
+  ids.each do |id|
+    ids_without_dependency.push(id) if vertices[id] == nil
+  end
+
+  ids_without_dependency + topological_sort(vertices.values).map { |value| value.value}
 end
