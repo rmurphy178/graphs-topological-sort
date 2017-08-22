@@ -12,11 +12,5 @@ require_relative 'graph'
 
 
 def install_order(arr)
-  # result = []
-  #
-  # arr.each do |sub_arr|
-  #   result << topological_sort(sub_arr)
-  # end
-  #
-  # result
+
 end
